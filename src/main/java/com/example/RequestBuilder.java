@@ -21,10 +21,13 @@ public class RequestBuilder {
 	 * @return
 	 * @throws URISyntaxException
 	 */
-	public static HttpPut put(final Payload<?> payload) throws URISyntaxException {
+	public static HttpPut put(final Payload<?> payload, final String... collections) throws URISyntaxException {
 
 		final URIBuilder uriBuilder = MLConfiguration.getURIBuilder();
 		uriBuilder.addParameter("uri", payload.getUri());
+		for(String collection : collections){
+			uriBuilder.addParameter("collection", collection);
+		}
 		final HttpPut request = new HttpPut(uriBuilder.build());
 		final StringEntity params = new StringEntity(payload.json(), "UTF-8");
 		params.setContentType(payload.getContentType().toString());

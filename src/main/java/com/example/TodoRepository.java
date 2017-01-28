@@ -23,7 +23,7 @@ public class TodoRepository<T>  {
 
 	public void save(T t) {
 		try {
-			RequestProcessor.process(RequestBuilder.put(new Payload<T>(t)));
+			RequestProcessor.process(RequestBuilder.put(new Payload<T>(t), "todo"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
