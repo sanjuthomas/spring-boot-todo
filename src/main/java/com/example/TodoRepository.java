@@ -1,9 +1,37 @@
 package com.example;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Created by mhellber on 9/1/16.
+ * 
+ * @author Sanju Thomas
+ *
+ * @param <T>
  */
-public interface TodoRepository extends JpaRepository<Todo, Long> {
+public class TodoRepository<T>  {
+	
+	private static final TodoRepository<Todo> repo = new TodoRepository<Todo>();
+	
+	public static TodoRepository<Todo> getInstance(){
+		return repo;
+	}
+
+	public List<T> findAll() {
+		return new ArrayList<>();
+	}
+
+	public void save(T t) {
+		try {
+			System.out.println(t.toString());
+			RequestProcessor.process(RequestBuilder.put(new Payload<T>(t)));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void deleteInBatch(List<T> t) {
+		
+	}
+
 }

@@ -1,5 +1,7 @@
 package com.example;
 
+import java.util.Arrays;
+
 import com.vaadin.data.fieldgroup.FieldGroup;
 import com.vaadin.data.util.BeanItem;
 import com.vaadin.ui.Alignment;
@@ -7,8 +9,6 @@ import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.themes.ValoTheme;
-
-import java.util.Arrays;
 
 
 public class TodoLayout extends HorizontalLayout {

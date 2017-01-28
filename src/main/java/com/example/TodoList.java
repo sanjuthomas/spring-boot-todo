@@ -1,19 +1,19 @@
 package com.example;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.annotation.PostConstruct;
+
 import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.ui.VerticalLayout;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.annotation.PostConstruct;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @UIScope
 @SpringComponent
 class TodoList extends VerticalLayout implements TodoChangeListener {
-    @Autowired
-    TodoRepository repository;
+	
+	private static final long serialVersionUID = 1L;
     private List<Todo> todos;
 
     @PostConstruct
@@ -25,7 +25,7 @@ class TodoList extends VerticalLayout implements TodoChangeListener {
     }
 
     private void update() {
-        setTodos(repository.findAll());
+        setTodos(TodoRepository.getInstance().findAll());
     }
 
     private void setTodos(List<Todo> todos) {
@@ -35,7 +35,7 @@ class TodoList extends VerticalLayout implements TodoChangeListener {
     }
 
      void addTodo(Todo todo) {
-        repository.save(todo);
+    	 TodoRepository.getInstance().save(todo);
         update();
     }
 
@@ -44,9 +44,8 @@ class TodoList extends VerticalLayout implements TodoChangeListener {
         addTodo(todo);
     }
 
-
     public void deleteCompleted() {
-        repository.deleteInBatch(
+    	TodoRepository.getInstance().deleteInBatch(
                 todos.stream().filter(Todo::isDone).collect(Collectors.toList())
         );
         update();

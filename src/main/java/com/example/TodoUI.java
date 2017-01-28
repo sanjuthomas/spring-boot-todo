@@ -1,13 +1,22 @@
 package com.example;
 
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.vaadin.annotations.Theme;
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
-import com.vaadin.ui.*;
+import com.vaadin.ui.Alignment;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Label;
+import com.vaadin.ui.TextField;
+import com.vaadin.ui.UI;
+import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @SpringUI
 @Theme("valo")
@@ -61,7 +70,7 @@ public class TodoUI extends UI {
         addButton.setIcon(FontAwesome.PLUS);
 
         addButton.addClickListener(click -> {
-            todoList.addTodo(new Todo(taskField.getValue()));
+            todoList.addTodo(new Todo(UUID.randomUUID().toString(), taskField.getValue(), false));
             taskField.setValue("");
             taskField.focus();
         });

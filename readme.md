@@ -1,6 +1,8 @@
-# Full stack Vaadin and Spring Boot demo app
+# Full stack Vaadin, Spring Boot and MarkLogic demo application
 
-![Vaadin and Spring Boot example with JPA and H2](screenshot.png)
+![Vaadin and Spring Boot example with MarkLogic REST](screenshot.png)
+
+This application expect MarkLogic application sever REST instance running on port 8000
 
 ## Running
 

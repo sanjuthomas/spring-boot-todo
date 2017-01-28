@@ -1,34 +1,20 @@
 package com.example;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
 public class Todo {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private String id;
 
     private String text;
 
     private boolean done;
 
-    public Todo() {
-    }
-
-    public Todo(String text) {
-        this.text = text;
-    }
-
-    public Todo(String text, boolean done) {
+    public Todo(String id, String text, boolean done) {
+    	this.id = id;
         this.text = text;
         this.done = done;
     }
-
-    public String getText() {
+    
+	public String getText() {
         return text;
     }
 
@@ -47,5 +33,10 @@ public class Todo {
     public void toggleDone() {
         setDone(!isDone());
     }
+    
+    @Override
+  	public String toString() {
+  		return id;
+  	}
 
 }
