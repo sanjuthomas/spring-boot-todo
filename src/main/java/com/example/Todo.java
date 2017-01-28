@@ -36,7 +36,7 @@ public class Todo {
     
     @Override
   	public String toString() {
-  		return id;
+  		return "/todo/"+id;
   	}
 
 }
