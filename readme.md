@@ -4,7 +4,7 @@
 
 This application expect MarkLogic application sever REST instance running on port 8000. You can change the application server port in ml-server-config.properties file.
 
-Vaadin - Spring Boot - MarkLogic REST(arch.png)
+[Vaadin - Spring Boot - MarkLogic REST](arch.png)
 
 ## Running
 
