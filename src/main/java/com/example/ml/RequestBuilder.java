@@ -1,4 +1,4 @@
-package com.example;
+package com.example.ml;
 
 import java.net.URISyntaxException;
 
@@ -7,6 +7,8 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.StringEntity;
+
+import com.example.Payload;
 
 /**
  *
