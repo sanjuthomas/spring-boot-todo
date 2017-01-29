@@ -4,6 +4,7 @@ import org.apache.http.entity.ContentType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.example.Todo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -16,22 +17,22 @@ public class Payload<T>{
 
 	private static final Logger logger = LoggerFactory.getLogger(Payload.class);
 	private static final ObjectMapper MAPPER = new ObjectMapper();
-	private T entity;
+	private Todo entity;
 	private final ContentType DEFAULT_CONTENT_TYPE = ContentType.APPLICATION_JSON;
 
-	public Payload(final T t){
+	public Payload(final Todo t){
 		this.entity = t;
 	}
 
 	public String getUri(){
-		return this.entity.toString();
+		return entity.uri();
 	}
 
-	public T getEntity() {
+	public Todo getEntity() {
 		return this.entity;
 	}
 
-	public void setEntity(final T entity) {
+	public void setEntity(final Todo entity) {
 		this.entity = entity;
 	}
 

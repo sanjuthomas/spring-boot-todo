@@ -7,8 +7,9 @@ package com.example.ml;
  */
 public enum MLEndpoints {
 	
-	CONFIG("document-path"),
-	DOCUMENT("options-path");
+	CONFIG("options-path"),
+	DOCUMENT("document-path"),
+	QBE("qbe-path");
 	
 	private String property;
 	

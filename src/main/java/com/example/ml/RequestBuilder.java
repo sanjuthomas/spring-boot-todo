@@ -1,7 +1,9 @@
 package com.example.ml;
 
 import java.net.URISyntaxException;
+import java.util.List;
 
+import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -20,7 +22,7 @@ public class RequestBuilder {
 	public static HttpPost post(final QueryOptionsPayload payload) throws URISyntaxException{
 		
 		final URIBuilder uriBuilder = MLConfiguration.getURIBuilder(MLEndpoints.CONFIG);
-		uriBuilder.setPath(payload.getName());
+		uriBuilder.setPath(uriBuilder.getPath() +"/" + payload.getName());
 		final HttpPost request = new HttpPost(uriBuilder.build());
 		final StringEntity params = new StringEntity(payload.getXml(), "UTF-8");
 		params.setContentType(payload.getContentType().toString());
@@ -56,10 +58,10 @@ public class RequestBuilder {
 	 * @return
 	 * @throws URISyntaxException
 	 */
-	public static HttpGet get(final String uri) throws URISyntaxException{
+	public static HttpGet get(final List<NameValuePair> nameValuePairs, MLEndpoints endpoint) throws URISyntaxException{
 
-		final URIBuilder uriBuilder = MLConfiguration.getURIBuilder(MLEndpoints.DOCUMENT);
-		uriBuilder.addParameter("uri", uri);
+		final URIBuilder uriBuilder = MLConfiguration.getURIBuilder(endpoint);
+		uriBuilder.addParameters(nameValuePairs);
 		return  new HttpGet(uriBuilder.build());
 	}
 

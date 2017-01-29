@@ -26,7 +26,7 @@ class TodoList extends VerticalLayout implements TodoChangeListener {
     }
 
     private void update() {
-        setTodos(TodoRepository.getInstance().findAll());
+        setTodos(TodoRepository.findAll());
     }
 
     private void setTodos(List<Todo> todos) {
@@ -36,7 +36,7 @@ class TodoList extends VerticalLayout implements TodoChangeListener {
     }
 
      void addTodo(Todo todo) {
-    	 TodoRepository.getInstance().save(todo);
+    	 TodoRepository.save(todo);
         update();
     }
 
@@ -46,7 +46,7 @@ class TodoList extends VerticalLayout implements TodoChangeListener {
     }
 
     public void deleteCompleted() {
-    	TodoRepository.getInstance().deleteInBatch(
+    	TodoRepository.deleteInBatch(
                 todos.stream().filter(Todo::isDone).collect(Collectors.toList())
         );
         update();
