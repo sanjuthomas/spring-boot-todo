@@ -3,7 +3,9 @@ package com.example.ml;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.Payload;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.example.Todo;
 
 /**
@@ -13,6 +15,8 @@ import com.example.Todo;
  * @param <T>
  */
 public class TodoRepository<T>  {
+	
+	private static final Logger logger = LoggerFactory.getLogger(TodoRepository.class);
 	
 	private static final TodoRepository<Todo> repo = new TodoRepository<Todo>();
 	
@@ -28,7 +32,7 @@ public class TodoRepository<T>  {
 		try {
 			RequestProcessor.process(RequestBuilder.put(new Payload<T>(t), "todo"));
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 	}
 

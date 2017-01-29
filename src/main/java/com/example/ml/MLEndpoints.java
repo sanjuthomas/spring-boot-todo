@@ -7,16 +7,16 @@ package com.example.ml;
  */
 public enum MLEndpoints {
 	
-	CONFIG("/v1/documents"),
-	DOCUMENT("/v1/config/query");
+	CONFIG("document-path"),
+	DOCUMENT("options-path");
 	
-	private String endpoint;
+	private String property;
 	
 	private MLEndpoints(String endpoint){
-		this.endpoint = endpoint;
+		this.property = endpoint;
 	}
 	
-	public String endpoint(){
-		return endpoint;
+	public String property(){
+		return property;
 	}
 }

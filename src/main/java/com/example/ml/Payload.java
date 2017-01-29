@@ -1,4 +1,4 @@
-package com.example;
+package com.example.ml;
 
 import org.apache.http.entity.ContentType;
 import org.slf4j.Logger;
