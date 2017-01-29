@@ -6,7 +6,7 @@ This application expect MarkLogic application sever REST instance running on por
 
 
 ## High Level Architecture
-![Vaadin - Spring Boot - MarkLogic REST](arch-latest.png)
+![Vaadin - Spring Boot - MarkLogic REST](arch-new.png)
 
 ## Running
 
