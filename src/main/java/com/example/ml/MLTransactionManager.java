@@ -12,6 +12,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.message.BasicHeader;
 import org.apache.http.message.BasicNameValuePair;
 
 /**
@@ -31,6 +32,7 @@ public class MLTransactionManager {
 	public static String begin() throws Exception{
 		
 		final HttpPost request = buildRequest(null, new ArrayList<>());
+		request.addHeader(new BasicHeader("Accept", "application/json"));
 		final HttpResponse response = RequestProcessor.process(request);
 		final HttpEntity entity = response.getEntity();
 		if(null != entity){
