@@ -9,7 +9,8 @@ public enum MLEndpoints {
 	
 	CONFIG("options-path"),
 	DOCUMENT("document-path"),
-	QBE("qbe-path");
+	QBE("qbe-path"),
+	TRANSACTION("transaction-path");
 	
 	private String property;
 	
