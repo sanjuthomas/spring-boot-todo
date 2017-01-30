@@ -22,8 +22,6 @@ import org.apache.http.message.BasicNameValuePair;
  */
 public class MLTransactionManager {
 	
-	private static final ContentType DEFAULT_CONTENT_TYPE = ContentType.TEXT_PLAIN;
-	
 	/**
 	 * 
 	 * @return
@@ -32,7 +30,7 @@ public class MLTransactionManager {
 	public static String begin() throws Exception{
 		
 		final HttpPost request = buildRequest(null, new ArrayList<>());
-		request.addHeader(new BasicHeader("Accept", "application/json"));
+		request.addHeader(new BasicHeader("Accept", ContentType.APPLICATION_JSON.getMimeType()));
 		final HttpResponse response = RequestProcessor.process(request);
 		final HttpEntity entity = response.getEntity();
 		if(null != entity){
@@ -51,7 +49,6 @@ public class MLTransactionManager {
 		}
 		final HttpPost request = new HttpPost(uriBuilder.build());
 		final StringEntity params = new StringEntity("", "UTF-8");
-		params.setContentType(DEFAULT_CONTENT_TYPE.toString());
 		request.setEntity(params);
 		return request;
 	}
