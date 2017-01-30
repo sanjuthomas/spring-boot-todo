@@ -10,9 +10,10 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.themes.ValoTheme;
 
-
 public class TodoLayout extends HorizontalLayout {
-    private final CheckBox done;
+
+	private static final long serialVersionUID = 1L;
+	private final CheckBox done;
     private final TextField text;
 
     public TodoLayout(Todo todo, TodoChangeListener changeListener) {

@@ -22,10 +22,11 @@ import com.vaadin.ui.themes.ValoTheme;
 @Theme("valo")
 public class TodoUI extends UI {
 
-    private VerticalLayout layout;
+	private static final long serialVersionUID = 1L;
+	private VerticalLayout layout;
 
     @Autowired
-    TodoList todoList;
+    private TodoList todoList;
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
