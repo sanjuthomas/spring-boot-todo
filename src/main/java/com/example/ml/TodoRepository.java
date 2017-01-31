@@ -35,10 +35,10 @@ public class TodoRepository<T>  {
 		try {
 			final List<NameValuePair> params = new ArrayList<>();
 			final NameValuePair options = new BasicNameValuePair("options", "todo-options");
-			final NameValuePair query = new BasicNameValuePair("query", "{ '$query': {'done': false} }");
+			final NameValuePair format = new BasicNameValuePair("format", "json");
 			params.add(options);
-			params.add(query);
-			final HttpResponse response = RequestProcessor.process(RequestBuilder.get(params, MLEndpoints.QBE));
+			params.add(format);
+			final HttpResponse response = RequestProcessor.process(RequestBuilder.get(params, MLEndpoints.SEARCH));
 			openTodos.addAll(extractDocuments(response));
 		} catch (IOException | URISyntaxException e) {
 			logger.error(e.getMessage(), e);

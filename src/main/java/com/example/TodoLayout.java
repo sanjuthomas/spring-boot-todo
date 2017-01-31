@@ -14,26 +14,26 @@ public class TodoLayout extends HorizontalLayout {
 
 	private static final long serialVersionUID = 1L;
 	private final CheckBox done;
-    private final TextField text;
+	private final TextField text;
 
-    public TodoLayout(Todo todo, TodoChangeListener changeListener) {
-        setWidth("100%");
-        setSpacing(true);
-        setDefaultComponentAlignment(Alignment.MIDDLE_LEFT);
+	public TodoLayout(final Todo todo, final TodoChangeListener changeListener) {
+		this.setWidth("100%");
+		this.setSpacing(true);
+		this.setDefaultComponentAlignment(Alignment.MIDDLE_LEFT);
 
-        done = new CheckBox();
-        text = new TextField();
-        text.setWidth("100%");
-        text.addStyleName(ValoTheme.TEXTFIELD_BORDERLESS);
+		this.done = new CheckBox();
+		this.text = new TextField();
+		this.text.setWidth("100%");
+		this.text.addStyleName(ValoTheme.TEXTFIELD_BORDERLESS);
 
-        FieldGroup fieldGroup = new FieldGroup(new BeanItem<>(todo));
-        fieldGroup.setBuffered(false);
-        fieldGroup.bindMemberFields(this);
-        addComponents(done, text);
-        setExpandRatio(text, 1);
+		final FieldGroup fieldGroup = new FieldGroup(new BeanItem<>(todo));
+		fieldGroup.setBuffered(false);
+		fieldGroup.bindMemberFields(this);
+		this.addComponents(this.done, this.text);
+		this.setExpandRatio(this.text, 1);
 
-        Arrays.asList(done, text).forEach(field -> {
-            field.addValueChangeListener(change -> changeListener.todoChanged(todo));
-        });
-    }
+		Arrays.asList(this.done, this.text).forEach(field -> {
+			field.addValueChangeListener(change -> changeListener.todoChanged(todo));
+		});
+	}
 }
