@@ -19,21 +19,21 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * 
+ *
  * @author Sanju Thomas
  *
  * @param <T>
  */
 public class TodoRepository<T>  {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(TodoRepository.class);
 	private static final ObjectMapper MAPPER = new ObjectMapper();
-	
+
 	public static List<Todo> findAll() {
-		
-		final List<Todo> openTodos = new ArrayList<Todo>();
+
+		final List<Todo> openTodos = new ArrayList<>();
 		try {
-			final List<NameValuePair> params = new ArrayList<NameValuePair>();
+			final List<NameValuePair> params = new ArrayList<>();
 			final NameValuePair options = new BasicNameValuePair("options", "todo-options");
 			final NameValuePair query = new BasicNameValuePair("query", "{ '$query': {'done': false} }");
 			params.add(options);
@@ -43,13 +43,13 @@ public class TodoRepository<T>  {
 		} catch (IOException | URISyntaxException e) {
 			logger.error(e.getMessage(), e);
 		}
-		
+
 		return openTodos;
 	}
-	
-	private static List<Todo> extractDocuments(HttpResponse response) throws JsonProcessingException, UnsupportedOperationException, IOException{
-		
-		final List<Todo> todos = new ArrayList<Todo>();
+
+	private static List<Todo> extractDocuments(final HttpResponse response) throws JsonProcessingException, UnsupportedOperationException, IOException{
+
+		final List<Todo> todos = new ArrayList<>();
 		final HttpEntity entity = response.getEntity();
 		if(null != entity){
 			final JsonNode searchResult = MAPPER.readTree(entity.getContent());
@@ -63,18 +63,28 @@ public class TodoRepository<T>  {
 		}
 		return todos;
 	}
-	
 
-	public static void save(Todo t) {
+
+	public static void save(final Todo t) {
+
 		try {
 			RequestProcessor.process(RequestBuilder.put(new Payload<Todo>(t), MLDocumentMetatdata.TODO.getCollection()));
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			logger.error(e.getMessage(), e);
 		}
 	}
 
-	public static void deleteInBatch(List<Todo> t) {
-		
+	public static void deleteInBatch(final List<Todo> todos)  {
+
+		try{
+			final List<String> uris = new ArrayList<>();
+			for(final Todo todo : todos){
+				uris.add(MLDocumentMetatdata.TODO.getDirectory() + todo.getId());
+			}
+			RequestProcessor.process(RequestBuilder.delete(uris.toArray(new String[] {})));
+		}catch(final Exception e){
+			logger.error(e.getMessage(), e);
+		}
 	}
 
 }
