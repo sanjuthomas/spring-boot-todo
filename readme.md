@@ -12,9 +12,9 @@ This application expect MarkLogic application sever REST instance running on por
 
 | REST end-point  | Operation     |
 | --------------  | ------------- | 
-| Documents  	  | [PUT] https://docs.marklogic.com/REST/PUT/v1/documents		 	  | 
-| Search  	 	  | [GET] https://docs.marklogic.com/REST/GET/v1/search	          |
-| Config Query	  | [POST] https://docs.marklogic.com/REST/POST/v1/config/query/['default'-or-name]	 	  |
+| Documents  	  | [PUT] (https://docs.marklogic.com/REST/PUT/v1/documents)	 	  | 
+| Search  	 	  | [GET] (https://docs.marklogic.com/REST/GET/v1/search)	          |
+| Config Query	  | [POST] (https://docs.marklogic.com/REST/POST/v1/config/query/['default'-or-name])	 	  |
 
 ## Running
 
