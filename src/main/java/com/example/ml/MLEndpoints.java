@@ -9,9 +9,8 @@ public enum MLEndpoints {
 
 	CONFIG("options-path"),
 	DOCUMENT("document-path"),
-	SEARCH("search-path"),
-	TRANSACTION("transaction-path");
-
+	SEARCH("search-path");
+	
 	private String property;
 
 	private MLEndpoints(final String endpoint){
